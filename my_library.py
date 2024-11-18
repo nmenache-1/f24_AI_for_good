@@ -5,7 +5,7 @@ def compute_probs(neg,pos):
   p0 = neg/(neg+pos)
   p1 = pos/(neg+pos)
   return [p0,p1]
-g
+
 def cond_prob(full_table, the_evidence_column, the_evidence_column_value, the_target_column, the_target_column_value):
   assert the_evidence_column in full_table
   assert the_target_column in full_table
