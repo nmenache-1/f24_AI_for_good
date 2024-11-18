@@ -5,7 +5,7 @@ def compute_probs(neg,pos):
   p0 = neg/(neg+pos)
   p1 = pos/(neg+pos)
   return [p0,p1]
-
+g
 def cond_prob(full_table, the_evidence_column, the_evidence_column_value, the_target_column, the_target_column_value):
   assert the_evidence_column in full_table
   assert the_target_column in full_table
@@ -16,7 +16,7 @@ def cond_prob(full_table, the_evidence_column, the_evidence_column_value, the_ta
   t_subset = up_table_subset(full_table, the_target_column, 'equals', the_target_column_value)
   e_list = up_get_column(t_subset, the_evidence_column)
   p_b_a = sum([1 if v==the_evidence_column_value else 0 for v in e_list])/len(e_list)
-  return p_b_a
+  return p_b_a + 0.01 # added smoothing factor from chapter 11
 
 def cond_probs_product(full_table, evidence_row, target_column, target_column_value):
   assert target_column in full_table
