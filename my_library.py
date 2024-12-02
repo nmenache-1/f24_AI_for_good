@@ -150,7 +150,7 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
 #loop through your architecures and get results
   for arch in architectures:
     k_actuals = up_get_column(test_table, target_column_name)
-    probs = up_neural_net(train_table, test_table, architectures, target_column_name)
+    probs = up_neural_net(train_table, test_table, arch, target_column_name)
     pos_probs = [pos for neg,pos in probs]
 
   #loop through thresholds
