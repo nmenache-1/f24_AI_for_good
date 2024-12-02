@@ -140,6 +140,36 @@ def run_random_forest(train, test, target, n):
     mets['Threshold'] = t
     all_mets = all_mets + [mets]
 
+
+
+
+
+def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
+  # arch_acc_dict = {}  #ignore if not attempting extra credit
+
+#loop through your architecures and get results
+  for arch in architectures:
+    k_actuals = up_get_column(test_table, target_column_name)
+    probs = up_neural_net(train_table, test_table, architectures, target_column_name)
+    pos_probs = [pos for neg,pos in probs]
+
+  #loop through thresholds
+    all_mets = []
+    for t in thresholds:
+      predictions = [1 if pos>t else 0 for pos in pos_probs]
+      #print(len(pos_probs))
+      #print(len(predictions))
+      #print(len(k_actuals))
+      pred_act_list = up_zip_lists(predictions, k_actuals)
+      mets = metrics(pred_act_list)
+      mets['Threshold'] = t
+      all_mets = all_mets + [mets]
+
+    print(f'Architecture: {arch}')
+    display(up_metrics_table(all_mets))
+
+
+
   metrics_table = up_metrics_table(all_mets)
 
   return metrics_table
