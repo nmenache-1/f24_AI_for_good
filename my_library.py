@@ -101,12 +101,7 @@ def metrics(zipped_list):
   return measure_dict
 
 
-
 from sklearn.ensemble import RandomForestClassifier
-
-
-from sklearn.ensemble import RandomForestClassifier
-
 
 def run_random_forest(train, test, target, n):
   #target is target column name
@@ -146,6 +141,8 @@ def run_random_forest(train, test, target, n):
   metrics_table = up_metrics_table(all_mets)
 
   return metrics_table
+
+
 def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
   # arch_acc_dict = {}  #ignore if not attempting extra credit
 
