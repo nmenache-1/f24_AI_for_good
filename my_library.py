@@ -105,6 +105,9 @@ def metrics(zipped_list):
 from sklearn.ensemble import RandomForestClassifier
 
 
+from sklearn.ensemble import RandomForestClassifier
+
+
 def run_random_forest(train, test, target, n):
   #target is target column name
   #n is number of trees to use
@@ -140,10 +143,9 @@ def run_random_forest(train, test, target, n):
     mets['Threshold'] = t
     all_mets = all_mets + [mets]
 
+  metrics_table = up_metrics_table(all_mets)
 
-
-
-
+  return metrics_table
 def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
   # arch_acc_dict = {}  #ignore if not attempting extra credit
 
